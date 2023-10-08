@@ -20,7 +20,7 @@ strategy = {
 ticker = set().union(*(d.keys() for d in strategy.values()))
 df=client.get_dataframe(ticker,startDate="1980-01-01",metric_name="adjClose").dropna()
 rendimenti=df.pct_change().dropna()
-portafoglio_GB=rendimenti[["DBC", "GLD", "IEF", "SPY", "TLT"]].sum(axis=1)/5
+portafoglio_GB=rendimenti[["DBC", "GLD", "SHY", "SPY", "TLT"]].sum(axis=1)/5
 equity_GB=(1+portafoglio_GB).cumprod()*capitale
 portafoglio_BK=0.6*rendimenti["SPY"]+0.4*rendimenti["IEF"]
 equity_BK=(1+portafoglio_BK).cumprod()*capitale
